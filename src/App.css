@@ -10,7 +10,6 @@
 
 .App-header {
   background-color: purple;
-  height: 150px;
   padding: 20px;
   color: white;
 }
@@ -23,6 +22,40 @@
   font-size: large;
 }
 
+ul.difficulty-selector > li {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 20px;
+  border: 1px solid #8080804d;
+  width: 100px;
+  border-radius: 10px;
+  transition: background 250ms ease-in-out;
+}
+
+ul.difficulty-selector li.hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+ul li.active {
+  display: inline-block;
+  background-color: red;
+  color: #fff;
+}
+
+.card-container {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  flex-wrap: wrap;
+}
+
+.card-container > div {
+  width: 25%;
+  height: 25%;
+  border: 1px solid;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,4 +63,52 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transition: -webkit-transform 1s;
+  -moz-transition: -moz-transform 1s;
+  -o-transition: -o-transform 1s;
+  transition: transform 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50%;
+}
+.card div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 140px;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card .front {
+  background: red;
+}
+.card .back {
+  background: blue;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.card.flipped {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
