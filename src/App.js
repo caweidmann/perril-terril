@@ -55,7 +55,11 @@ class App extends Component {
           selected={this.state.difficultyLevel}
           onClick={this.selectDifficultyLevel}
         />
-        <Board cards={this.state.cards} onCardClick={this.onCardClick} />
+        <Board
+          cards={this.state.cards}
+          onCardClick={this.onCardClick}
+          difficultyLevel={this.state.difficultyLevel}
+        />
       </div>
     );
   }

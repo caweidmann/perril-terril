@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 
 const Card = props => {
   return (
-    <div style={{ position: 'relative' }}>
+    <div
+      style={{
+        position: 'relative',
+        width:
+          props.difficultyLevel === 'easy'
+            ? '25%'
+            : props.difficultyLevel === 'medium'
+              ? '12%'
+              : '16.667%'
+      }}
+    >
       <div
         className={['card', props.selected ? 'flipped' : ''].join(' ')}
         onClick={() => props.onCardClick(props.id)}
@@ -14,9 +24,7 @@ const Card = props => {
             backgroundImage: `url(${props.url})`,
             backgroundSize: '100% 100%'
           }}
-        >
-          2
-        </div>
+        />
       </div>
     </div>
   );
@@ -27,7 +35,12 @@ class Board extends Component {
     return (
       <div className="card-container">
         {this.props.cards.map(card => (
-          <Card key={card.id} {...card} onCardClick={this.props.onCardClick} />
+          <Card
+            key={card.id}
+            {...card}
+            onCardClick={this.props.onCardClick}
+            difficultyLevel={this.props.difficultyLevel}
+          />
         ))}
       </div>
     );
