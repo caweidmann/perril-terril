@@ -9,8 +9,8 @@ const Card = props => {
           props.difficultyLevel === 'easy'
             ? '25%'
             : props.difficultyLevel === 'medium'
-              ? '12%'
-              : '16.667%'
+              ? '16.667%'
+              : '12.5%'
       }}
     >
       <div

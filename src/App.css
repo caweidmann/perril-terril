@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 .App-logo {
@@ -12,6 +15,7 @@
   background-color: purple;
   padding: 20px;
   color: white;
+  height: 200px;
 }
 
 .App-title {
@@ -22,6 +26,10 @@
   font-size: large;
 }
 
+ul.difficulty-selector {
+  height: 40px;
+}
+
 ul.difficulty-selector > li {
   display: inline-block;
   padding: 10px;
@@ -29,10 +37,10 @@ ul.difficulty-selector > li {
   border: 1px solid #8080804d;
   width: 100px;
   border-radius: 10px;
-  transition: background 250ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
-ul.difficulty-selector li.hover {
+ul.difficulty-selector li:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -46,13 +54,13 @@ ul li.active {
 .card-container {
   display: flex;
   width: 100%;
-  height: 500px;
+  height: calc(100vh - 71px - 200px);
   flex-wrap: wrap;
 }
 
 .card-container > div {
   width: 25%;
-  height: 25%;
+  /* height: 25%; */
   border: 1px solid;
 }
 
@@ -81,15 +89,11 @@ ul li.active {
   transform-style: preserve-3d;
   -webkit-transform-origin: 50% 50%;
 }
-.card div {
+.card > div {
   display: block;
   height: 100%;
   width: 100%;
   line-height: 260px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 140px;
   position: absolute;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
