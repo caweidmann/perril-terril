@@ -39,7 +39,7 @@ ul.difficulty-selector li.hover {
 
 ul li.active {
   display: inline-block;
-  background-color: red;
+  background-color: purple;
   color: #fff;
 }
 
@@ -97,10 +97,10 @@ ul li.active {
   backface-visibility: hidden;
 }
 .card .front {
-  background: red;
+  background: purple;
 }
 .card .back {
-  background: blue;
+  /* background: blue; */
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);

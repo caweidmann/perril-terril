@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 
 const Card = props => {
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <div
         className={['card', props.selected ? 'flipped' : ''].join(' ')}
         onClick={() => props.onCardClick(props.id)}
       >
-        <div className="front">1</div>
-        <div className="back" style={{ backgroundImage: `url(${props.url})` }}>
+        <div className="front" />
+        <div
+          className="back"
+          style={{
+            backgroundImage: `url(${props.url})`,
+            backgroundSize: '100% 100%'
+          }}
+        >
           2
         </div>
       </div>

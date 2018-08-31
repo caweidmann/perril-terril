@@ -32,7 +32,11 @@ class App extends Component {
     const cards = await Engine.getBoard(
       DIFFICULTY_MAP[this.state.difficultyLevel]
     );
-    console.log({ cards });
+    this.setState({ cards });
+  };
+
+  onCardClick = async id => {
+    const cards = await Engine.onCardClick(id);
     this.setState({ cards });
   };
 
@@ -51,7 +55,7 @@ class App extends Component {
           selected={this.state.difficultyLevel}
           onClick={this.selectDifficultyLevel}
         />
-        <Board cards={this.state.cards} onCardClick={Engine.onCardClick} />
+        <Board cards={this.state.cards} onCardClick={this.onCardClick} />
       </div>
     );
   }
