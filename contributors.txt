@@ -4,3 +4,4 @@ Perril Terril Hackathon team:
 - Coenie
 - Mandie
 - JP
+- Nick
