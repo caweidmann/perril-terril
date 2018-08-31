@@ -59,8 +59,6 @@ ul li.active {
 }
 
 .card-container > div {
-  width: 25%;
-  /* height: 25%; */
   border: 1px solid;
 }
 

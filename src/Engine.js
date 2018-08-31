@@ -10,14 +10,16 @@ const Engine = {
       Engine.lastClicked = targetCard.id;
     } else {
       if (Engine.lastClicked === id) {
+        // do nothing, same card clicked
+      } else {
         const targetCard = _.find(Engine.board, { id });
         targetCard.selected = true;
-      } else {
-        const id = Engine.lastClicked;
-        const targetCard = _.find(Engine.board, { id });
-        targetCard.selected = false;
+        if (
+          targetCard.url === _.find(Engine.board, { id: this.lastClicked }).url
+        ) {
+          // cons;
+        }
       }
-      Engine.lastClicked = -1;
     }
 
     console.log('board', Engine.board);
@@ -45,7 +47,11 @@ const Engine = {
 
   getEmojis(numEmoji) {
     return new Promise((resolve, reject) => {
-      resolve(_.times(numEmoji, () => 'https://loremflickr.com/320/240'));
+      resolve(
+        Array.from(new Array(numEmoji)).map(
+          (v, i) => `https://loremflickr.com/320/240?_=${i}`
+        )
+      );
     });
   }
 };

@@ -22,7 +22,8 @@ const Card = props => {
           className="back"
           style={{
             backgroundImage: `url(${props.url})`,
-            backgroundSize: '100% 100%'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
         />
       </div>
