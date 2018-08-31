@@ -17,7 +17,8 @@ const Engine = {
         if (
           targetCard.url === _.find(Engine.board, { id: this.lastClicked }).url
         ) {
-          // cons;
+          console.log('match');
+          Engine.lastClicked = -1;
         }
       }
     }
