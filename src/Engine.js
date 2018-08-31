@@ -43,6 +43,7 @@ const Engine = {
   },
 
   getBoard(size = 6) {
+    Engine.moves = [];
     return new Promise((resolve, reject) => {
       const numCards = size * size;
 
