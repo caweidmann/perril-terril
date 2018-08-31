@@ -11,8 +11,6 @@ const DIFFICULTY_MAP = {
 };
 
 class App extends Component {
-  // to get board run
-  //Engine.getBoard().then(boardObject => {}) // pass in size integer e.g. 4 I
   state = {
     cards: [],
     difficultyLevel: 'medium'

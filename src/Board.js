@@ -14,7 +14,11 @@ const Card = props => {
       }}
     >
       <div
-        className={['card', props.selected ? 'flipped' : ''].join(' ')}
+        className={[
+          'card',
+          props.selected ? 'flipped' : '',
+          props.disabled ? 'disabled' : ''
+        ].join(' ')}
         onClick={() => props.onCardClick(props.id)}
       >
         <div className="front" />

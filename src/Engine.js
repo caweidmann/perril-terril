@@ -1,30 +1,45 @@
 import _ from 'lodash';
 
 const Engine = {
-  lastClicked: -1,
+  moves: [],
 
   onCardClick(id) {
-    if (Engine.lastClicked === -1) {
-      const targetCard = _.find(Engine.board, { id });
-      targetCard.selected = true;
-      Engine.lastClicked = targetCard.id;
-    } else {
-      if (Engine.lastClicked === id) {
-        // do nothing, same card clicked
-      } else {
-        const targetCard = _.find(Engine.board, { id });
-        targetCard.selected = true;
-        if (
-          targetCard.url === _.find(Engine.board, { id: this.lastClicked }).url
-        ) {
-          console.log('match');
-          Engine.lastClicked = -1;
-        }
-      }
+    Engine.moves.push(id);
+    const card = _.find(Engine.board, { id });
+    card.selected = true;
+
+    // Only one selected, nothing to do...
+    if (!(Engine.moves.length > 1)) {
+      return Promise.resolve(Engine.board);
     }
 
-    console.log('board', Engine.board);
-    return Engine.board;
+    // Same card clicked
+    if (id === Engine.moves[Engine.moves.length - 2]) {
+      Engine.moves.pop();
+      return Promise.resolve(Engine.board);
+    }
+
+    const card1back = _.find(Engine.board, {
+      id: Engine.moves[Engine.moves.length - 2]
+    });
+
+    if (card.url === card1back.url && Engine.moves.length % 2 === 0) {
+      // Reset moves and mark winning cards
+      Engine.moves = [];
+      card.disabled = true;
+      card1back.disabled = true;
+    } else if (Engine.moves.length % 2 !== 0) {
+      // We need to go back two cards, because if we only go back one then the board won't show the selected states
+      // correctly. It would update the board accurately, but the user would not see the second card if it's not
+      // a match as its state would be set to false... so we delay the flipping of cards by one move.
+      const card2back = _.find(Engine.board, {
+        id: Engine.moves[Engine.moves.length - 3]
+      });
+      card1back.selected = card1back.disabled;
+      card2back.selected = card2back.disabled;
+    }
+
+    return Promise.resolve(Engine.board);
   },
 
   getBoard(size = 6) {
@@ -38,7 +53,8 @@ const Engine = {
             boardUrls.map((url, id) => ({
               url,
               id,
-              selected: false
+              selected: false,
+              disabled: false
             }))
           );
 
