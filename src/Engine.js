@@ -34,11 +34,13 @@ const Engine = {
       Engine.getEmojis(numCards / 2)
         .then(urls => {
           const boardUrls = urls.concat(urls);
-          Engine.board = boardUrls.map((url, id) => ({
-            url,
-            id,
-            selected: false
-          }));
+          Engine.board = _.shuffle(
+            boardUrls.map((url, id) => ({
+              url,
+              id,
+              selected: false
+            }))
+          );
 
           resolve(Engine.board);
         })
