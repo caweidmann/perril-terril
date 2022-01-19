@@ -1,3 +1,5 @@
+__This is code which was created during a [Responsive Digital](https://responsive.co.za/) mini hackathon (1 hour).__
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
